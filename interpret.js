@@ -4,6 +4,17 @@ $(document).ready(function () {
     Alice,30,Canada
     Bob,22,UK`;
 
+  const myStrings = ["Hello", "World", "How", "Are", "You"];
+  console.log(myStrings);
+
+  $.each(myStrings, function (index, value) {
+    // Create a new div element and set its text
+    var newDiv = $("<div>").text(value);
+
+    // Append the new div to the container
+    $("#container").append(newDiv);
+  });
+
   // Function to parse CSV into arrays using jquery-csv
   function parseCSV(csv) {
     const lines = $.csv.toArrays(csv, { separator: "," });
@@ -20,4 +31,6 @@ $(document).ready(function () {
   $("#name").text(parsedData[1][0]);
   $("#age").text(parsedData[1][1]);
   $("#country").text(parsedData[1][2]);
+
+
 });
