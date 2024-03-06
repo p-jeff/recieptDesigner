@@ -1,33 +1,103 @@
 /* Reset default styles */
+
+html {
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+}
+
 body, h1, p {
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
+@font-face {
+    font-family: 'DiatypeRoundedVar';
+    src: url('assets/Fonts/ABCDiatypeRoundedPlusVariable-Trial.ttf') format('truetype'); 
 }
 
-/* need style for:
+body {
+    width: 266.4px;
+    height: auto;
+    padding: 1mm;
+    justify-content: center;
+    align-items: center;
+    font-family: 'DiatypeRoundedVar', sans-serif;
+    font-size: 9pt;
+    line-height: 10pt;
+    font-variant: normal;
+    font-variation-settings: "MONO" 1, "slnt" 0, "wdth" 100, "wght" 400;
+}
 
-.seperator
+.seperator {
+    text-align: justify;
+    text-align-last: justify;
+}
 
-#Header
-    #Adress
-    #Logo
+.first-column {
+    width:30%;
+    float: left;
+}
+.second-column {
+    width: 1fr; 
+    float: right;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+}
+
+.total {
+}
+
+.id {
+    margin-bottom: 1em;
+}
+
+.team {
+    margin-bottom: 1em;
+}
+.center {
+    text-align: center;
+}
+.gum {
+    margin-top: 20em;
+}
+
+
+    #title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4em;
+    }
+
+    #number {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #push-right {
+        margin-left: auto;
+    }
+   
     
 
-Main
-    .container
-    .qTag
-    .Question
-    .aTag
-    .Answer
+ 
+#citation {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-size: 16pt;
+    line-height: 17pt;
+    font-variation-settings: "MONO" 0.5, "slnt" 0, "wdth" 100, "wght" 400;
+}
 
-#total
 
-#citation
-
-#footer
-
-#qr
+#qr {
+    margin-left: 36.5%;
+    margin-right: 36.5%;
+    margin-top: 2em;
+    margin-bottom: 1.4em;
+    display: block;
+}
