@@ -137,8 +137,7 @@ main{
 
 .emoji-ans {
     font-family: 'Emoji';
-    margin-bottom: -4pt;
-    float:right;
+
 }
 
 .bulletNum {
@@ -150,7 +149,7 @@ main{
 }
 .bulletNum-ans {
     margin-bottom: -4pt;
-    float: right;
+
     
 }
 /* ENDS HERE */
