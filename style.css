@@ -32,23 +32,28 @@ body {
 .seperator {
     text-align: justify;
     text-align-last: justify;
+    clear: both; /* Ensure the separator appears in a new line */
+    width: 100%;
+    display: block;
 }
 
 .first-column {
-    width:30%;
+    width:20%;
     float: left;
+    clear: both;
+    box-sizing: border-box; /* Include padding and border in the width */
 }
 .second-column {
-    width: 1fr; 
+    width: 100%;
     float: right;
+    text-align: left;
+    box-sizing: border-box; /* Include padding and border in the width */
+    word-wrap: break-word;  
 }
 
 .grid-row {
     display: grid;
     grid-template-columns: 30% 1fr;
-}
-
-.total {
 }
 
 .id {
@@ -66,24 +71,20 @@ body {
 }
 
 
-    #title {
+#title {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 4em;
     }
 
-    #number {
-        display: flex;
-        justify-content: space-between;
+#number {
+      
         align-items: center;
     }
-    #push-right {
-        margin-left: auto;
+#push-right {
+        float: right;
     }
-   
-    
-
  
 #citation {
     margin-top: 0.2em;
@@ -100,4 +101,12 @@ body {
     margin-top: 2em;
     margin-bottom: 1.4em;
     display: block;
+}
+
+.container-template{
+    display: none;
+}
+
+main{
+    text-align: center;
 }
