@@ -29,6 +29,7 @@ body {
     font-variation-settings: "MONO" 1, "slnt" 0, "wdth" 100, "wght" 400;
 }
 
+
 .seperator {
     text-align: justify;
     text-align-last: justify;
@@ -107,6 +108,49 @@ body {
     display: none;
 }
 
+.emoji-template{
+    display: none;
+}   
+
+.number-template{
+    display: none;
+}
+
 main{
     text-align: center;
 }
+
+/* NEW CODE STARTS HERE */
+/* Emoji font included in assets, if we wanna use raspberry pi or smthn next week */
+@font-face {
+    font-family: 'Emoji';
+    src: url('assets/Fonts/Apple\ Color\ Emoji.ttc') format('truetype-collection'); 
+}
+
+.emoji {
+    font-family: 'Emoji';
+    line-height: 32pt;
+    font-size: 28.6pt;    
+    margin-top: 4pt;
+    text-align: justify;
+}
+
+.emoji-ans {
+    font-family: 'Emoji';
+    margin-bottom: -4pt;
+    float:right;
+}
+
+.bulletNum {
+    line-height: 36pt;
+    font-size: 37pt;    
+    margin-top: 2pt;
+    letter-spacing: -3pt;
+    font-variation-settings: "MONO" 0, "slnt" 0, "wdth" 100, "wght" 250;
+}
+.bulletNum-ans {
+    margin-bottom: -4pt;
+    float: right;
+    
+}
+/* ENDS HERE */

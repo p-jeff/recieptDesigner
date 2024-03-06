@@ -30,18 +30,68 @@ $(document).ready(function () {
       questions.pop();
 
       const container = $("#main");
-      const containerTemplate = $(".container-template");
+      const containerTemplateText = $(".container-template");
+      const containerTemplateEmoji = $(".emoji-template");
+      const containerTemplateNumber = $(".number-template");
 
       questions.forEach((item, index) => {
         // Check if the answer is undefined
         if (answers[index] !== null) {
+          const emojis = ["💀", "🤕", "🙁", "😐", "🙂", "😊", "🤩"];
+
+          const isEmoji =
+            typeof answers[index] === "string" &&
+            emojis.some((emojis) => answers[index].includes(emojis));
+          const isNumber =
+            typeof answers[index] === "number" &&
+            answers[index] >= 0 &&
+            answers[index] <= 7;
+
+          const containerTemplate = isEmoji
+            ? containerTemplateEmoji.clone()
+            : isNumber
+            ? containerTemplateNumber.clone()
+            : containerTemplateText.clone();
+          containerTemplate
+            .removeClass("container-template")
+            .removeClass("emoji-template")
+            .removeClass("number-template");
+
           const newContainer = containerTemplate
             .clone()
             .removeClass("container-template");
 
+          let numberString
+          if (isNumber) {
+            function replaceWithSpecialCharacter(inputString) {
+              const specialCharactersMap = {
+          
+                '1': '❶',
+                '2': '❷',
+                '3': '❸',
+                '4': '❹',
+                '5': '❺',
+                '6': '❻',
+                '7': '❼',
+               
+              };
+            
+              // Use a regular expression to match all digits in the input string
+              return inputString.replace(/\d/g, digit => specialCharactersMap[digit] || digit);
+            }
+            const originalString = answers[index].toString();
+            const newString = replaceWithSpecialCharacter(originalString);
+            console.log(newString);
+
+            numberString = newString;
+          }
+
+          // Example usage:
+
           const qString = `Q ${index + 1}`.padEnd(11, "\u00a0") + item;
-          const aString =
-            `A ${index + 1}`.padEnd(11, "\u00a0") + answers[index];
+          const aString = isEmoji
+            ? answers[index] : isNumber ? numberString
+            : `A ${index + 1}`.padEnd(11, "\u00a0") + answers[index];
 
           newContainer.find(".Question").html(function () {
             return `<p>${qString}</p>`;

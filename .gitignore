@@ -1,0 +1,5 @@
+# Ignore fonts
+*.ttf
+*.otf
+*.woff
+*.woff2
