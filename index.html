@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/typeiii/jquery-csv/1.0.11/src/jquery.csv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  
     <script src="interpret.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,7 +17,7 @@
         cmd+c → credit → cmd+v <span id="push-right">Receipt</span>
       </span>
       <span id="adress">
-        Pfingsweidenstrasse 96<br />
+        Pfingstweidstrasse 96<br />
         CH-8005 Zürich <br />
         Switzerland
       </span>
@@ -24,28 +25,32 @@
     <div id="main">
       <div class="container-template">
         <span class="seperator">-------------------------------------</span>
+        <span class="qTag first-column"> Q2</span>
         <span class="Question second-column" >(Here goes the question)</span>
+        <span class="aTag first-column"> A2</span> <br>
         <span class="Answer second-column"> (Here goes the answer) </span>
       </div>
       <div class="emoji-template">
         <span class="seperator">-------------------------------------</span>
-        <span class="Question .second-column">
+        <span class="qTag first-column"> Q2</span> 
+        <span class="Question second-column">
           How are you feeling?
         </span> 
-        <span class=" first-column">Options</span> <br>
-              <p class="emoji">💀🤕🙁😐🙂😊🤩</p> 
-        <span class="aTag first-column"> A2</span>
+        <span class="first-column">Options</span> <br> <br>
+         <p class="emoji" style="width: 100%;">💀🤕🙁😐🙂😊🤩</p> 
+        <span class="aTag first-column"> A2</span> <br>
         <p class="emoji emoji-ans Answer">🤩</p>
       </div>
       
       <div class="number-template">
         <span class="seperator">-------------------------------------</span>
-        <span class="Question .second-column">
+        <span class="qTag first-column"> Q2</span> 
+        <span class="Question second-column" >
           How are you feeling?
-        </span>
-        <span class="irst-column">Options</span>
+        </span> <br>
+        <span class="first-column">Options</span>
               <p class="bulletNum">❶❷❸❹❺❻❼</p> 
-        <span class="aTag first-column"> A2</span>
+        <span class="aTag first-column">A2</span> <br/>
         <p class="bulletNum bulletNum-ans Answer">❼</p>
       </div>
     </div>
@@ -60,7 +65,7 @@
     </div>
     <div class="total grid-row">
       <p>Total</p>
-      <p > <span id="number"> 9</span> <span id="push-right">Credits</span></p>
+      <p > <span id="number">9</span> <span id="push-right">Credits</span></p>
     </div>
     <span class="seperator">-------------------------------------</span>
     <div id="footer">
@@ -83,7 +88,7 @@
       <div class="grid-row">
         <p>Mentoring</p>
         <p>
-          Henriette-Friederike Helm <br />
+          Henriette-Friederike Herm <br />
           Silvan Possa
         </p>
       </div>
