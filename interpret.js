@@ -4,8 +4,8 @@ $(document).ready(function () {
   function parseCSV(csv) {
     return new Promise((resolve, reject) => {
       Papa.parse(
-       // "https://docs.google.com/spreadsheets/d/1nPMSe2IX11KqpHOWUKEmWtwsZj_2ch3z523rmyErQU8/export?format=csv",
-       "https://docs.google.com/spreadsheets/d/1pexddQLwlkUX8MzHu-fwgtY9fJD1vscUIkF-fEdDF_w/export?format=csv",
+        // "https://docs.google.com/spreadsheets/d/1nPMSe2IX11KqpHOWUKEmWtwsZj_2ch3z523rmyErQU8/export?format=csv",
+        "https://docs.google.com/spreadsheets/d/1pexddQLwlkUX8MzHu-fwgtY9fJD1vscUIkF-fEdDF_w/export?format=csv",
         {
           header: true,
           download: true,
@@ -22,18 +22,18 @@ $(document).ready(function () {
     });
   }
   async function fetchData() {
-    console.log("Fetching data...")
+    console.log("Fetching data...");
     $.ajax({
       url: "./14.csv",
       dataType: "text",
       success: async function (csv) {
         const parsedData = await parseCSV(csv);
 
-        let whichOne = 0;
+        let whichOne = 1;
         let print = false;
 
         if (parsedData.length > previousLength) {
-         print=true;
+          print = true;
         }
 
         if (parsedData.length >= previousLength) {
@@ -99,6 +99,7 @@ $(document).ready(function () {
                   5: "❺",
                   6: "❻",
                   7: "❼",
+                  0: "⓿",
                 };
 
                 // Use a regular expression to match all digits in the input string
@@ -113,8 +114,6 @@ $(document).ready(function () {
               numberString = newString;
             }
 
-            // Example usage:
-
             const qString = item;
             const aString = isEmoji
               ? answers[index]
@@ -122,19 +121,24 @@ $(document).ready(function () {
               ? numberString
               : answers[index];
 
-            newContainer.find(".Question").html(function () {
-              return `<p>${qString}</p>`;
-            });
+            const isAlreadyInHTML = $("body").html().includes(qString) && $("body").html().includes(aString);
 
-            newContainer.find(".Answer").html(function () {
-              return `<p>${aString}</p>`;
-            });
-            // Set numbers dynamically (replace 'Q (number)' and 'A (number)')
-            newContainer.find(".qTag").text(`Q${index + 1}`);
-            newContainer.find(".aTag").text(`A${index + 1}`);
+            if (!isAlreadyInHTML) {
+              console.log(isAlreadyInHTML)
+              newContainer.find(".Question").html(function () {
+                return `<p>${qString}</p>`;
+              });
 
-            // Append the new container to the main container
-            container.append(newContainer);
+              newContainer.find(".Answer").html(function () {
+                return `<p>${aString}</p>`;
+              });
+              // Set numbers dynamically (replace 'Q (number)' and 'A (number)')
+              newContainer.find(".qTag").text(`Q${index + 1}`);
+              newContainer.find(".aTag").text(`A${index + 1}`);
+
+              // Append the new container to the main container
+              container.append(newContainer);
+            }
           }
           // If the answer is undefined, skip rendering the question and its container
         });
@@ -150,10 +154,10 @@ $(document).ready(function () {
         let timestamp = "13.03.2024 14:33:12"; // Assuming this is the format you get from the CSV
 
         // First, split the date and time parts
-        const parts = timestamp.split(' ');
-        const dateParts = parts[0].split('.');
-        const timeParts = parts[1].split(':');
-        
+        const parts = timestamp.split(" ");
+        const dateParts = parts[0].split(".");
+        const timeParts = parts[1].split(":");
+
         // Parse the date and time components
         const year = parseInt(dateParts[2], 10);
         const month = parseInt(dateParts[1], 10); // Adjust for zero-based indexing
@@ -161,7 +165,7 @@ $(document).ready(function () {
         const hours = parseInt(timeParts[0], 10);
         const minutes = parseInt(timeParts[1], 10);
         const seconds = parseInt(timeParts[2], 10);
-        
+
         const date = `${day}.${month}.${year}`;
         const clockTime = `${hours}:${minutes}:${seconds}`;
         $("#time").text(clockTime);
@@ -186,6 +190,7 @@ $(document).ready(function () {
   }
 
   async function fetchDataAndUpdate() {
+
     await fetchData(); // Fetch data initially
     setInterval(fetchData, 10000); // Set interval to fetch data every 30 seconds
   }
